@@ -1,6 +1,11 @@
 #!/bin/sh
 
 ###
+# Locale
+###
+localedef -f UTF-8 -i ja_JP ja_JP
+
+###
 # Docker Install
 ###
 # パッケージ一覧の更新
@@ -37,3 +42,5 @@ usermod -aG docker vagrant
 apt-get install -y zsh
 echo "/usr/bin/zsh" >> /etc/shells
 chsh -s /usr/bin/zsh vagrant
+
+cp -f /vagrant/.zshrc /home/vagrant/.zshrc
