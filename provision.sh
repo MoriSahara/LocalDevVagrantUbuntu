@@ -1,5 +1,8 @@
 #!/bin/sh
 
+###
+# Docker Install
+###
 # パッケージ一覧の更新
 apt-get -y update
 
@@ -25,8 +28,12 @@ chown vagrant:docker /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
 # dockerグループを設定してvagrantユーザーをdockerグループへ追加
-groupadd docker
 usermod -aG docker vagrant
 
-# 設定反映のための再起動
-reboot
+###
+# zsh
+###
+
+apt-get install -y zsh
+echo "/usr/bin/zsh" >> /etc/shells
+chsh -s /usr/bin/zsh vagrant
